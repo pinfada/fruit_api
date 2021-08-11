@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_120758) do
+ActiveRecord::Schema.define(version: 2021_08_11_083820) do
 
   create_table "markets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.decimal "price"
+    t.integer "market_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["market_id"], name: "index_prices_on_market_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -26,5 +34,6 @@ ActiveRecord::Schema.define(version: 2021_08_08_120758) do
     t.index ["market_id"], name: "index_products_on_market_id"
   end
 
+  add_foreign_key "prices", "markets"
   add_foreign_key "products", "markets"
 end
