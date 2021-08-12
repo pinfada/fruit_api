@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_091800) do
+ActiveRecord::Schema.define(version: 2021_08_12_082736) do
+
+  create_table "characteristics", force: :cascade do |t|
+    t.string "unit"
+    t.string "origine"
+    t.string "certification"
+    t.integer "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_characteristics_on_product_id"
+  end
 
   create_table "markets", force: :cascade do |t|
     t.string "name"
@@ -34,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_08_11_091800) do
     t.index ["market_id"], name: "index_products_on_market_id"
   end
 
+  add_foreign_key "characteristics", "products"
   add_foreign_key "prices", "products"
   add_foreign_key "products", "markets"
 end
