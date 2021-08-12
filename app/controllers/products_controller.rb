@@ -14,11 +14,11 @@ class ProductsController < ApplicationController
     render json: @product
   end
 
-  # GET /products/new
+ # GET /products/new
   def new
     @product = @market.products.new
     render json: @product
-  end
+  end 
 
   # POST /products
   def create
@@ -52,6 +52,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name)
+      params.require(:product).permit(:name, :market_id)
     end
 end

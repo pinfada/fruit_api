@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :characteristics
   resources :markets do
     resources :products do 
       resources :prices

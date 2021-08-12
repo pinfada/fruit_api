@@ -1,5 +1,6 @@
 class PricesController < ApplicationController
   before_action :set_price, only: [:show, :update, :destroy]
+  before_action :set_product, only: [:create, :new]
 
   # GET /prices
   def index
@@ -13,15 +14,20 @@ class PricesController < ApplicationController
     render json: @price
   end
 
-  # POST /prices
-  def create
-    @price = Price.new(price_params)
-
+  # GET /products/new
+  def new
+    @price = @product.prices.new
     if @price.save
       render json: @price, status: :created, location: @price
     else
       render json: @price.errors, status: :unprocessable_entity
     end
+  end
+
+  # POST /prices
+  def create
+    @price = @product.prices.create(product_params)
+    render json: @price, status: :created, location: @price
   end
 
   # PATCH/PUT /prices/1
@@ -44,8 +50,12 @@ class PricesController < ApplicationController
       @price = Price.find(params[:id])
     end
 
+    def set_product
+      @market = Product.find(params[:product_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def price_params
-      params.require(:price).permit(:price, :market_id)
+      params.require(:price).permit(:price, :product_id)
     end
 end
