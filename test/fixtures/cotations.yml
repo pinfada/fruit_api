@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cotation_date: 2021-08-17
+  price: one
+  product: one
+
+two:
+  cotation_date: 2021-08-17
+  price: two
+  product: two
