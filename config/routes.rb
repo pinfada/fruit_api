@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :cotations
   shallow do
     resources :markets do
       resources :products do 
+        resources :cotations
         resources :prices do
           resources :characteristics
         end

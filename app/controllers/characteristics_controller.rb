@@ -16,7 +16,7 @@ class CharacteristicsController < ApplicationController
 
   # GET /products/new
   def new
-    @price = @product.characteristics.new
+    @characteristic = @product.characteristics.new
 
     if @characteristic.save
       render json: @characteristic, status: :created, location: @characteristic
@@ -27,7 +27,7 @@ class CharacteristicsController < ApplicationController
 
   # POST /characteristics
   def create
-    @price = @product.characteristics.create(characteristic_params)
+    @characteristic = @product.characteristics.create(characteristic_params)
     render json: @characteristic, status: :created, location: @characteristic
   end
 
