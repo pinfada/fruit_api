@@ -17,6 +17,8 @@ gem 'puma', '~> 5.0'
 # gem 'bcrypt', '~> 3.1.7'
 # allows you to generate your JSON in an object-oriented and convention-driven manner
 gem 'active_model_serializers', '~> 0.10.12'
+gem 'activerecord-reset-pk-sequence'
+gem 'database_cleaner'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

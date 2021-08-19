@@ -5,7 +5,7 @@ class MarketsController < ApplicationController
   def index
     @markets = Market.all
 
-    render json: @markets.include(:products), only: [:name]
+    render json: @markets
   end
 
   # GET /markets/1

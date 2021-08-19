@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_224404) do
+ActiveRecord::Schema.define(version: 2021_08_18_230434) do
 
   create_table "characteristics", force: :cascade do |t|
     t.string "unit"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_08_18_224404) do
     t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "characteristic_id", null: false
+    t.index ["characteristic_id"], name: "index_cotations_on_characteristic_id"
     t.index ["price_id"], name: "index_cotations_on_price_id"
     t.index ["product_id"], name: "index_cotations_on_product_id"
   end
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_224404) do
   end
 
   add_foreign_key "characteristics", "products"
+  add_foreign_key "cotations", "characteristics"
   add_foreign_key "cotations", "prices"
   add_foreign_key "cotations", "products"
   add_foreign_key "prices", "products"

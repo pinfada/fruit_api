@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
-  before_action :set_market,  only: [:create, :new]
+  before_action :set_market,  only: [:index, :create, :new]
 
   # GET /products
   def index
-    @products = Product.all
+    @products = @market.products.all
 
     render json: @products
   end
