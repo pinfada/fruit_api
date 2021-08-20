@@ -20,29 +20,33 @@ market_name = nil
 product_name = nil
 
 csv.each do |row|
-    if   market_name != row['marche'] 
-    then market_name = row['marche'] 
+    if   market_name != row['marche']
+    then market_name = row['marche'].downcase
          Market.create(name: market_name)
-         #puts "#{market_name} read"
     end
 end
+puts "There are now #{Market.count} rows in the Market table"
 
 # Récupération de toutes les données présentes en table
 markets = Market.all
 
-#Boucle sur la table Market, creation produits
-for m in markets
-    market_name = m.name
-    csv.each do |row|
-        if  market_name = row['marche']
-            if   product_name != row['produit'] 
-            then product_name = row['produit']
-                m.products.create(name: product_name)
+#Boucle sur la liste des produits et creation du produit si absent en base
+csv.each do |row|
+    market_name = row['marche'].downcase
+    market = Market.find_by name: market_name 
+    if market == nil
+        puts "create new market #{market_name}"
+        Market.create(name: market_name)
+    else
+        if  product_name != row['produit']
+            product_name = row['produit'].downcase
+            check_product = market.products.exists?(name: product_name)
+            if check_product == false
+                market.products.create(name: product_name)
                 #puts "Added #{product_name} to #{market_name}"
             end
         end
     end
 end
 
-puts "There are now #{Market.count} rows in the Market table"
 puts "There are now #{Product.count} rows in the Product table"
