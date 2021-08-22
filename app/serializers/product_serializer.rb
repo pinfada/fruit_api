@@ -1,5 +1,5 @@
 class ProductSerializer < ActiveModel::Serializer
   attributes :id, :name
-  has_many :markets
+  belongs_to :market
   has_many :characteristics
 end
