@@ -1,10 +1,10 @@
 class CharacteristicsController < ApplicationController
   before_action :set_characteristic, only: [:show, :update, :destroy]
-  before_action :set_product, only: [:create, :new]
+  before_action :set_product, only: [:index, :create, :new]
 
   # GET /characteristics
   def index
-    @characteristics = Characteristic.all
+    @characteristics = @product.characteristics
 
     render json: @characteristics
   end
@@ -52,7 +52,7 @@ class CharacteristicsController < ApplicationController
     end
 
     def set_product
-      @market = Product.find(params[:product_id])
+      @product = Product.find(params[:product_id])
     end
 
     # Only allow a list of trusted parameters through.

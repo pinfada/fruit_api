@@ -1,0 +1,1 @@
+puts 'Start inserting seed "cotations" ...'

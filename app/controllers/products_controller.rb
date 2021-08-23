@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = @market.products.all
+    @products = @market.products
 
     render json: @products
   end
