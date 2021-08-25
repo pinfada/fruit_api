@@ -19,6 +19,8 @@ gem 'puma', '~> 5.0'
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'activerecord-reset-pk-sequence'
 gem 'database_cleaner'
+# It lets you create pretty URLs and work with human-friendly strings as if they were numeric ids
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

@@ -1,5 +1,5 @@
 class PriceSerializer < ActiveModel::Serializer
   attributes :id, :price
-  has_one :characteristic
+  belongs_to :product
   has_many :cotations
 end

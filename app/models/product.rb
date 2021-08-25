@@ -4,5 +4,7 @@ class Product < ApplicationRecord
     validates :name, length: {minimum: 2}
     belongs_to :market
     has_many :characteristics
+    has_many :prices
+    has_many :cotations, through: :prices
     before_save { self.name = name.downcase }
 end

@@ -1,10 +1,10 @@
 class PricesController < ApplicationController
   before_action :set_price, only: [:show, :update, :destroy]
-  before_action :set_product, only: [:create, :new]
+  before_action :set_product, only: [:index, :create, :new]
 
   # GET /prices
   def index
-    @prices = Price.all
+    @prices = @product.prices
 
     render json: @prices
   end
@@ -51,7 +51,7 @@ class PricesController < ApplicationController
     end
 
     def set_product
-      @market = Product.find(params[:product_id])
+      @product = Product.find(params[:product_id])
     end
 
     # Only allow a list of trusted parameters through.

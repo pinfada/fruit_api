@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   shallow do
     resources :markets do
       resources :products do 
-        resources :characteristics do
-          resources :prices do
-            resources :cotations
-          end
+        resources :characteristics
+        resources :prices do
+          resources :cotations
         end
       end
     end
