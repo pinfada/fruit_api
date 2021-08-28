@@ -10,7 +10,7 @@ price_data = nil
 #Read csv file
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'franceagri.csv'))
 #csv = CSV.parse(csv_text.scrub, headers: true)
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'UTF-8')
 
 #Boucle sur la liste des produits et ajouts des caractéristiques
 csv.each do |row|

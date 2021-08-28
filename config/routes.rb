@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  
+  resources :markets do
+    resources :products
+  end
+
+  resources :products do
+    get 'search', on: :collection
+  end
+
   shallow do
     resources :markets do
       resources :products do 

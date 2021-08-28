@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
     end
 
     def set_market
-      @market = Market.find(params[:market_id])
+      @market = Market.friendly.find(params[:market_id])
      end
 
     # Only allow a list of trusted parameters through.

@@ -52,7 +52,7 @@ class CharacteristicsController < ApplicationController
     end
 
     def set_product
-      @product = Product.find(params[:product_id])
+      @product = Product.friendly.find(params[:product_id])
     end
 
     # Only allow a list of trusted parameters through.
