@@ -4,8 +4,11 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = @market.products
-
+    if @market != nil
+      @products = @market.products
+    else
+      @products = Product.all
+    end
     render json: @products
   end
 
@@ -47,7 +50,11 @@ class ProductsController < ApplicationController
     end
 
     def set_market
-      @market = Market.friendly.find(params[:market_id])
+      if params[:market_id].present?
+        @market = Market.friendly.find(params[:market_id])
+      else
+        @market = nil
+      end
      end
 
     # Only allow a list of trusted parameters through.
