@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
+    #render json: @product.to_json(include: [:prices, :characteristics])
     render json: @product
   end
 
