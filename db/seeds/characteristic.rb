@@ -25,8 +25,8 @@ csv.each do |row|
         product_name = row['produit'].downcase
         product = market.products.find_by name: product_name 
         if product == nil
-            puts "create new Product #{product_name}"
-            Product.create(name: product_name)
+            puts "create new Product #{market_name} | #{product_name}"
+            market.products.create(name: product_name)
         else
             unit_characteristic = row['unit']
             origine_characteristic = row['origine']

@@ -23,8 +23,8 @@ csv.each do |row|
         product_name = row['produit'].downcase
         product = market.products.find_by name: product_name 
         if product == nil
-            puts "create new Product #{product_name}"
-            Product.create(name: product_name)
+            puts "create new Product #{market_name} | #{product_name}"
+            market.products.create(name: product_name)
         else
             price_data = row['prix']
             check_price = product.prices.exists?(price: price_data)

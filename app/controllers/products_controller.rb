@@ -4,11 +4,6 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    if @market != nil
-      @products = @market.products
-    else
-      @products = Product.all
-    end
     render json: @products
   end
 
@@ -47,19 +42,24 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
-    def set_market
+    def set_market     
       if params[:market_id].present?
-        @market = Market.friendly.find(params[:market_id])
+        #data = params[:market_id]
+        #market_name = data.gsub('-', ' ')
+        #@market = Market.friendly.find(params[:market_id])
+        @market = Market.where(:id => params[:market_id])
+        #puts "market name : ", market_name
+        @products = @market.products
       else
-        @market = nil
+        @products = Product.all
       end
-     end
+    end
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :market_id)
+      params.require(:product).permit(:name)
     end
 end

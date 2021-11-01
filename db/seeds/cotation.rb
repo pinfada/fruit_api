@@ -26,7 +26,7 @@ csv.each do |row|
         product_name = row['produit'].downcase
         product = market.products.find_by name: product_name 
         if product == nil
-            puts "Add new Product #{product_name} for #{market_name}"
+            puts "Add new Product #{market_name} | #{product_name}"
             market.products.create(name: product_name)
         else
             price_data = row['prix']

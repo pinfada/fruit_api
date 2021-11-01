@@ -3,9 +3,7 @@ Rails.application.routes.draw do
     resources :products
   end
 
-  resources :products do
-    get 'search', on: :collection
-  end
+  #resources :products
 
   shallow do
     resources :markets do
