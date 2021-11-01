@@ -5,7 +5,7 @@ class PricesController < ApplicationController
   # GET /prices
   def index
     @prices = @product.prices
-    if prices == nil
+    if @prices == nil
       @prices = Product.all
     end
 

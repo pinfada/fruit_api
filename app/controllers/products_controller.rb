@@ -49,9 +49,10 @@ class ProductsController < ApplicationController
       if params[:market_id].present?
         #data = params[:market_id]
         #market_name = data.gsub('-', ' ')
-        #@market = Market.friendly.find(params[:market_id])
-        @market = Market.where(:id => params[:market_id])
-        #puts "market name : ", market_name
+        @market = Market.friendly.find(params[:market_id])
+        check_product = Market.find_by id: params[:market_id]
+        puts "market : ", @market
+        puts "check_product : ", check_product
         @products = @market.products
       else
         @products = Product.all

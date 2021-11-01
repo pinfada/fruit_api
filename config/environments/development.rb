@@ -51,7 +51,7 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   #config.hosts << "/[a-z0-9]+\.gitpod\.io/"
-  config.hosts << "3000-turquoise-magpie-wcehl2rh.ws-eu18.gitpod.io"
+  config.hosts << "3000-turquoise-magpie-wcehl2rh.ws-eu17.gitpod.io"
 
 
   # Raises error for missing translations.
